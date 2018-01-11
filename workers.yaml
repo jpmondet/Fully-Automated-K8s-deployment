@@ -1,5 +1,5 @@
 ---
-- hosts: worker_nodes
+- hosts: workers
   become: True
   roles: 
     - common

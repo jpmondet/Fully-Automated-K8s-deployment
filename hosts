@@ -1,7 +1,7 @@
 [masters]
 server01
 
-[worker_nodes]
+[workers]
 server0[2:4]
 
 [admin_machines]
