@@ -18,9 +18,9 @@ node_mask: 24   # Size of the subnet (in the cluster_cidr) per node
 ## Misc for certificates
 #
 cluster_name: Kubernetes
-country: C
-locality: L
-organization: O
-organizationalUnit : OU
-state: S
+country: the
+locality: automated
+organization: way
+organizationalUnit : in
+state: ansible
 

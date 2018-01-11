@@ -22,6 +22,6 @@ You can customize the **global_vars.yaml** to get the subnets you like for your 
 
 ## K8s networking solutions
 
-# Without plugins on fully L3 network
-# Plugins :
+* Without plugins on fully L3 network
+* Plugins :
 [...]
