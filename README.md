@@ -10,13 +10,18 @@ The resulting cluster is meant to be ready to try different networking solutions
 
 We all know about most of the existing networking plugins (*Flannel, Calico, Kube-router, etc..*) but this is a hugely moving ecosystem and having a "ready-to-bench" cluster looks convenient.
 
-## The physical topology
+## The network topology
 
 I am going to re-use the network topology deployed with the [Fully-Automated-BGP-fabric](https://github.com/jpmondet/Fully-Automated-BGP-fabric) to focus here on the K8s cluster.
 
-## The logical resulting topology
+## The resulting cluster
 
 You can customize the **global_vars.yaml** to get the subnets you like for your resulting cluster but the defaults are : 
 
 *Diagram to insert here*
 
+## K8s networking solutions
+
+# Without plugins on fully L3 network
+# Plugins :
+[...]
