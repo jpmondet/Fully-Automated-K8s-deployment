@@ -17,7 +17,7 @@ node_mask: 24   # Size of the subnet (in the cluster_cidr) per node
 #
 ## Misc for certificates
 #
-cluster_name: Kubernetes
+cluster_name: MyK8sCluster
 country: the
 locality: automated
 organization: way
