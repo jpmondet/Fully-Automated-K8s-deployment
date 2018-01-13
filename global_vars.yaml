@@ -13,7 +13,6 @@ service_ip: 85.85.0.0/16
 cluster_dns: 85.85.85.85  
 cluster_cidr: 172.168.0.0/16
 node_mask: 24   # Size of the subnet (in the cluster_cidr) per node
-
 #
 ## Misc for certificates
 #

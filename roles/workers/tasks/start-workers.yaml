@@ -1,0 +1,15 @@
+---
+- name: Install Socat
+  apt:
+    name: socat
+
+- name: Start services
+  service: 
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - containerd
+    - cri-containerd
+    - kubelet
+    - kube-proxy

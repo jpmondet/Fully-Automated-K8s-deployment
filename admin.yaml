@@ -2,5 +2,5 @@
 - hosts: admin_machines
   become: True
   roles: 
-    - common
     - admin
+    - common

@@ -1,0 +1,27 @@
+---
+- name: Get prequisites
+  get_url:
+    url: "{{ item }}"
+    dest: /tmp/
+  with_items: 
+    - "https://pkg.cfssl.org/R1.2/cfssl_linux-amd64"
+    - "https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl"
+
+- name: Giving rights to execute files
+  file:
+    path: "/tmp/{{ item }}"
+    mode: "u+x"
+  with_items: 
+    - cfssl_linux-amd64
+    - cfssljson_linux-amd64
+    - kubectl
+
+- name: Copying common needed files to bin
+  copy:
+    src: "/tmp/{{ item }}"
+    dest: /usr/local/bin/
+  with_items:
+    - kubectl
+    - cfssl_linux-amd64
+    - cfssljson_linux-amd64
