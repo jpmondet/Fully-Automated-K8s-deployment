@@ -1,0 +1,48 @@
+---
+- name: Get prequisites
+  get_url:
+    url: "{{ item }}"
+    dest: /tmp/
+  with_items: 
+    - "https://pkg.cfssl.org/R1.2/cfssl_linux-amd64"
+    - "https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl"
+    - "https://github.com/coreos/etcd/releases/download/v3.2.11/etcd-v3.2.11-linux-amd64.tar.gz"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kube-apiserver"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kube-controller-manager"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kube-scheduler"
+    - "https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz"
+    - "https://github.com/kubernetes-incubator/cri-containerd/releases/download/v1.0.0-beta.0/cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz"
+    - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kube-proxy"
+
+
+- name: Extracting archives
+  unarchive:
+    src: "/tmp/{{ item }}"
+    dest: /tmp/
+  with_fileglob: /tmp/*gz
+
+- name: Giving rights to execute files
+  file:
+    path: "/tmp/{{ item }}"
+    mode: "u+x"
+  with_items: 
+    - cfssl_linux-amd64
+    - cfssljson_linux-amd64
+    - kubectl
+    - kube-apiserver
+    - kube-controller-manager
+    - kube-scheduler
+
+- name: Copying admin files to bin
+  copy:
+    src: "/tmp/{{ item }}"
+    dest: /usr/local/bin/
+  with_items:
+    - kubectl
+    - cfssl_linux-amd64
+    - cfssljson_linux-amd64
+
+- name: Install Rsync to copy large files on the right targets
+  apt:
+    name: rsync
