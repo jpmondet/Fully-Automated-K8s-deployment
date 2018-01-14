@@ -20,7 +20,22 @@
     src: "/tmp/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
   with_items:
-    - ca.pem
-    - ca-key.pem
-    - kubernetes-key.pem
-    - kubernetes.pem
+    - kube-apiserver
+    - kube-controller-manager
+    - kube-scheduler
+    - kubectl
+
+- name: Copying Apiserver service file on Master(s)
+  template: 
+    src: "kube-apiserver-service.j2"
+    dest: "/etc/systemd/system/kube-apiserver.service"
+
+- name: Copying kube-controller-manager service file on Master(s)
+  template: 
+    src: "kube-controller-manager-service.j2"
+    dest: "/etc/systemd/system/kube-controller-manager.service"
+
+- name: Copying kube-scheduler service file on Master(s)
+  template: 
+    src: "kube-scheduler.service"
+    dest: "/etc/systemd/system/kube-scheduler.service"
