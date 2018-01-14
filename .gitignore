@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Ansible
+*.retry
+
 # Distribution / packaging
 .Python
 env/
@@ -34,6 +37,7 @@ wheels/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+Pip*
 
 # Unit test / coverage reports
 htmlcov/
