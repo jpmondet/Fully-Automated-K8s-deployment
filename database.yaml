@@ -2,4 +2,4 @@
 - hosts: databases
   become: True
   roles: 
-    - database
+    - etcd

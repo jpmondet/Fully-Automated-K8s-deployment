@@ -15,12 +15,17 @@
     - "https://github.com/kubernetes-incubator/cri-containerd/releases/download/v1.0.0-beta.0/cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz"
     - "https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kube-proxy"
     - "https://storage.googleapis.com/kubernetes-the-hard-way/kube-dns.yaml"
+  tags: pre
 
 - name: Extracting archives
   unarchive:
     src: "/tmp/{{ item }}"
     dest: /tmp/
-  with_fileglob: /tmp/*gz
+  with_items: 
+    - cni-plugins-amd64-v0.6.0.tgz
+    - cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz
+    - etcd-v3.2.11-linux-amd64.tar.gz
+  tags: pre
 
 - name: Giving rights to execute files
   file:
@@ -33,6 +38,7 @@
     - kube-apiserver
     - kube-controller-manager
     - kube-scheduler
+  tags: pre
 
 - name: Copying admin files to bin
   copy:
@@ -42,7 +48,9 @@
     - kubectl
     - cfssl_linux-amd64
     - cfssljson_linux-amd64
+  tags: pre
 
 - name: Install Rsync to copy large files on the right targets
   apt:
     name: rsync
+  tags: pre
