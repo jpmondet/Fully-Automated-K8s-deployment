@@ -1,4 +1,4 @@
----- 
+---
 - name: Preparing certificates files
   template:
     src: "{{ item }}"

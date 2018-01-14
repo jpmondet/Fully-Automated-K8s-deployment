@@ -1,6 +1,4 @@
 ---
-
----
 - include_tasks: prequisites.yaml 
 - include_tasks: certificates.yaml 
 - include_tasks: kubeconfigs.yaml
