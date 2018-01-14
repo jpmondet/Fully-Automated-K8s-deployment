@@ -1,0 +1,27 @@
+---
+- name: Ensures dir exists on database servers
+  file: 
+    path="{{ item }}"
+    state=directory
+  with_items:
+    - /etc/etcd
+    - /var/lib/etcd
+
+- name: Copying cert files on database servers
+  template: 
+    src: "/tmp/{{ item }}"
+    dest: "/etc/etcd/{{ item }}"
+  with_items:
+    - ca.pem
+    - kubernetes-key.pem
+    - kubernetes.pem
+
+- name: Copying etcd binary files on database servers
+  copy: 
+    src: "/tmp/etcd-v3.2.11-linux-amd64/etcd*"
+    dest: "/usr/loca/bin"
+
+- name: Copying etcd service file on database servers
+  template: 
+    src: "etcd-service.j2"
+    dest: "/etc/systemd/system/etcd.service"

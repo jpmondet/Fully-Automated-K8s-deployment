@@ -2,5 +2,4 @@
 - hosts: workers
   become: True
   roles: 
-    - common
     - workers

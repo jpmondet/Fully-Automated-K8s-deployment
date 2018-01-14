@@ -1,0 +1,28 @@
+---
+- name: daemon_reload
+  systemd: 
+    daemon_reload: yes
+
+- name: Start services
+  service: 
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - kube-apiserver
+    - kube-controller-manager
+    - kube-scheduler
+
+- name: RBAC for kubelets
+  kubernetes:
+    api_endpoint: {{ master_ip }}
+    insecure: true
+    file_reference: {{ rbac_kubelet.yaml }}
+    state: present
+
+- name: Kube dns
+  kubernetes:
+    api_endpoint: {{ master_ip }}
+    insecure: true
+    file_reference: /tmp/kube-dns.yaml
+    state: present

@@ -1,8 +1,4 @@
 ---
-- name: Install Socat
-  apt:
-    name: socat
-
 - name: daemon_reload
   systemd: 
     daemon_reload: yes
@@ -13,7 +9,4 @@
     enabled: yes
     state: started
   with_items:
-    - containerd
-    - cri-containerd
-    - kubelet
-    - kube-proxy
+    - etcd

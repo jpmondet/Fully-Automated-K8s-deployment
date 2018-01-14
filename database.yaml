@@ -2,5 +2,4 @@
 - hosts: databases
   become: True
   roles: 
-    - common
     - database
