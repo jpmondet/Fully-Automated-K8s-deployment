@@ -17,8 +17,8 @@
     - kubernetes.pem
 
 - name: Copying etcd binary files on database servers
-  copy: 
-    src: "/tmp/etcd-v3.2.11-linux-amd64/etcd*"
+  unarchive: 
+    src: "/tmp/etcd-v3.2.11-linux-amd64.tar.gz"
     dest: "/usr/loca/bin"
 
 - name: Copying etcd service file on database servers

@@ -17,16 +17,6 @@
     - "https://storage.googleapis.com/kubernetes-the-hard-way/kube-dns.yaml"
   tags: pre
 
-- name: Extracting archives
-  unarchive:
-    src: "/tmp/{{ item }}"
-    dest: /tmp/
-  with_items: 
-    - cni-plugins-amd64-v0.6.0.tgz
-    - cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz
-    - etcd-v3.2.11-linux-amd64.tar.gz
-  tags: pre
-
 - name: Giving rights to execute files
   file:
     path: "/tmp/{{ item }}"
@@ -44,6 +34,7 @@
   copy:
     src: "/tmp/{{ item }}"
     dest: /usr/local/bin/
+    mode: "u+x"
   with_items:
     - kubectl
     - cfssl_linux-amd64
