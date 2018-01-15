@@ -5,7 +5,7 @@
     state=directory
 
 - name: Copying cert files on master(s)
-  template: 
+  copy: 
     src: "/tmp/{{ item }}"
     dest: "/var/lib/kubernetes/{{ item }}"
   with_items:
@@ -16,7 +16,7 @@
     - encryption-config.yaml
 
 - name: Copying Kube files on master(s)
-  template: 
+  copy: 
     src: "/tmp/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
   with_items:
