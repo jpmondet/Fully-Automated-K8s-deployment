@@ -66,11 +66,11 @@
     dest: "/etc/systemd/system/kubelet.service"
 
 - name: Copying Cni-plugins files on minion(s)
-  copy: 
-    src: "/tmp/cni-plugin/"
+  unarchive:
+    src: "/tmp/cni-plugins-amd64-v0.6.0.tgz"
     dest: "/opt/cni/bin"
 
 - name: Copying Cri-containerd files on minion(s)
   copy: 
-    src: "/tmp/cri-container/"
+    src: "/tmp/cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz"
     dest: "/"

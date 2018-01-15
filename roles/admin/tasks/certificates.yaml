@@ -33,4 +33,4 @@
 - name: Generating Masters certificates with cfssl
   shell: "cfssl_linux-amd64 gencert -ca=/tmp/ca.pem -ca-key=/tmp/ca-key.pem -config={{ role_path }}/files/ca-config.json -hostname={{ hostvars[item]['ext_ip'] }},{{ hostvars[item]['int_ip'] }},127.0.0.1,kubernetes.default -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson_linux-amd64 -bare /tmp/kubernetes"
   with_items:
-    - "{{ groups['workers'] }}"
+    - "{{ groups['masters'] }}"
