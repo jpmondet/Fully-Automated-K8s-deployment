@@ -39,3 +39,11 @@
   with_items:
     - "{{ groups['masters'] }}"
   tags: pre
+
+- name: Giving enough rights to be able to distribute files
+  copy:
+    path: "/tmp/{{ item }}"
+    mode: "u+x"
+  with_items:
+    - kubernetes-key.pem
+    - ca-key.pem

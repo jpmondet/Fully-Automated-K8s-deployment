@@ -38,7 +38,7 @@
 
 - name: Copying Loopback files on minion(s)
   template: 
-    src: "99-loopback.conf"
+    src: "{{ role_path }}/files/99-loopback.conf"
     dest: "/etc/cni/net.d/99-loopback.conf"
 
 - name: Copying Kube-proxy files on minion(s)
@@ -62,7 +62,7 @@
 
 - name: Copying Kubelet service on minion(s)
   template: 
-    src: "/tmp/kubelet-service.j2"
+    src: "kubelet-service.j2"
     dest: "/etc/systemd/system/kubelet.service"
 
 - name: Copying Cni-plugins files on minion(s)

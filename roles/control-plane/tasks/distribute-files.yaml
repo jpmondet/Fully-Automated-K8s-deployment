@@ -37,5 +37,5 @@
 
 - name: Copying kube-scheduler service file on Master(s)
   template: 
-    src: "kube-scheduler.service"
+    src: "{{ role_path }}/files/kube-scheduler.service"
     dest: "/etc/systemd/system/kube-scheduler.service"
