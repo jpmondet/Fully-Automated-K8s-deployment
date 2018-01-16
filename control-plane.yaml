@@ -2,4 +2,5 @@
 - hosts: masters
   become: True
   roles: 
-    - control-plane
+    - role: control-plane
+      tags: cp

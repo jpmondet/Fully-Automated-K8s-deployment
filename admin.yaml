@@ -2,4 +2,5 @@
 - hosts: admin_machines
   become: True
   roles: 
-    - admin
+    - role: admin
+      tags: pre
