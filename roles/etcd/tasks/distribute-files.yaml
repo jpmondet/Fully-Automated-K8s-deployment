@@ -20,6 +20,8 @@
   unarchive: 
     src: "/tmp/etcd-v3.2.11-linux-amd64.tar.gz"
     dest: "/usr/local/bin"
+    extra_opts: [--strip-components=1]
+
 
 - name: Copying etcd service file on database servers
   template: 

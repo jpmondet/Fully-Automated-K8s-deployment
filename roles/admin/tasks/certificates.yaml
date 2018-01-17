@@ -41,9 +41,9 @@
   tags: pre
 
 - name: Giving enough rights to be able to distribute files
-  copy:
+  file:
     path: "/tmp/{{ item }}"
-    mode: "u+x"
+    mode: "o+r"
   with_items:
     - kubernetes-key.pem
     - ca-key.pem
