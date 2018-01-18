@@ -8,6 +8,7 @@
   copy: 
     src: "/tmp/{{ item }}"
     dest: "/var/lib/kubernetes/{{ item }}"
+    mode: 0655
   with_items:
     - ca.pem
     - ca-key.pem

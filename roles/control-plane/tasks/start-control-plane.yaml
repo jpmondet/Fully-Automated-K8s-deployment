@@ -1,4 +1,8 @@
 ---
+- name: Install Python yaml for k8s
+  apt:
+    name: python-yaml
+
 - name: daemon_reload
   systemd: 
     daemon_reload: yes
@@ -13,16 +17,24 @@
     - kube-controller-manager
     - kube-scheduler
 
-- name: RBAC for kubelets
+- name: RBAC for kubelets - CLusterRole
   kubernetes:
-    api_endpoint: {{ master_ip }}
+    api_endpoint: "{{ master_ip }}"
     insecure: true
-    file_reference: {{ rbac_kubelet.yaml }}
+    file_reference: "{{ role_path }}/files/rbac_clusterRole.yaml"
+    state: present
+
+
+- name: RBAC for kubelets - ClusterRoleBinding
+  kubernetes:
+    api_endpoint: "{{ master_ip }}"
+    insecure: true
+    file_reference: "{{ role_path }}/files/rbac_clusterRoleBinding.yaml"
     state: present
 
 - name: Kube dns
   kubernetes:
-    api_endpoint: {{ master_ip }}
+    api_endpoint: "{{ master_ip }}"
     insecure: true
     file_reference: /tmp/kube-dns.yaml
     state: present
