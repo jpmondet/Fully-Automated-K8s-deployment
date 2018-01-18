@@ -8,7 +8,6 @@
   copy: 
     src: "/tmp/{{ item }}"
     dest: "/var/lib/kubernetes/{{ item }}"
-    mode: 0655
   with_items:
     - ca.pem
     - ca-key.pem
@@ -20,6 +19,7 @@
   copy: 
     src: "/tmp/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
+    mode: 0655
   with_items:
     - kube-apiserver
     - kube-controller-manager
