@@ -17,24 +17,34 @@
     - kube-controller-manager
     - kube-scheduler
 
-- name: RBAC for kubelets - CLusterRole
-  kubernetes:
-    api_endpoint: "{{ master_ip }}"
-    insecure: true
-    file_reference: "{{ role_path }}/files/rbac_clusterRole.yaml"
-    state: present
+#- name: RBAC for kubelets - CLusterRole
+#  kubernetes:
+#    api_endpoint: "{{ master_ip }}"
+#    insecure: true
+#    file_reference: "{{ role_path }}/files/rbac_clusterRole.yaml"
+#    state: present
 
+
+#- name: RBAC for kubelets - ClusterRoleBinding
+#  kubernetes:
+#    api_endpoint: "{{ master_ip }}"
+#    insecure: true
+#    file_reference: "{{ role_path }}/files/rbac_clusterRoleBinding.yaml"
+#    state: present
+
+- name: RBAC for kubelets - ClusterRole
+  shell: "kubectl apply -f {{ role_path }}/files/rbac_clusterRole.yaml"
 
 - name: RBAC for kubelets - ClusterRoleBinding
-  kubernetes:
-    api_endpoint: "{{ master_ip }}"
-    insecure: true
-    file_reference: "{{ role_path }}/files/rbac_clusterRoleBinding.yaml"
-    state: present
+  shell: "kubectl apply -f {{ role_path }}/files/rbac_clusterRoleBinding.yaml"
+
+#- name: Kube dns
+#  kubernetes:
+#    api_endpoint: "{{ master_ip }}"
+#    insecure: true
+#    file_reference: /tmp/kube-dns.yaml
+#    state: present
 
 - name: Kube dns
-  kubernetes:
-    api_endpoint: "{{ master_ip }}"
-    insecure: true
-    file_reference: /tmp/kube-dns.yaml
-    state: present
+  shell: "kubectl create -f /tmp/kube-dns.yaml"
+  when: "{{ dns_addon }}"
