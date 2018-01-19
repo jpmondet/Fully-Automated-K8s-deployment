@@ -3,6 +3,10 @@
   apt:
     name: socat
 
+- name: Install docker
+  apt:
+    name: docker
+
 - name: daemon_reload
   systemd: 
     daemon_reload: yes
