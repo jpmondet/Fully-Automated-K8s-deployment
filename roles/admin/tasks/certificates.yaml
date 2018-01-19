@@ -42,9 +42,8 @@
 
 - name: Giving enough rights to be able to distribute files
   file:
-    path: "/tmp/{{ item }}"
+    path: "{{ item }}"
     mode: "o+r"
-  with_items:
-    - kubernetes-key.pem
-    - ca-key.pem
-  tags: pre
+  with_fileglob:
+    - /tmp/*.pem
+    - /tmp/*.kubeconfig

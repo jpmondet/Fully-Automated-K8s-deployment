@@ -55,6 +55,7 @@
   template: 
     src: "/tmp/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
+    mode: 0655
   with_items:
     - kubectl
     - kube-proxy
@@ -71,6 +72,6 @@
     dest: "/opt/cni/bin"
 
 - name: Copying Cri-containerd files on minion(s)
-  copy: 
+  unarchive: 
     src: "/tmp/cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz"
     dest: "/"
