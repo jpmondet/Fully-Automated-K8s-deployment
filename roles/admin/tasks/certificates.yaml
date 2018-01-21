@@ -40,6 +40,10 @@
     - "{{ groups['masters'] }}"
   tags: pre
 
+- name: Extra step to manage self signed CA
+  shell: openssl x509 -outform der -in /tmp/ca.pem -out /tmp/kubernetes.crt
+  tags: pre
+
 - name: Giving enough rights to be able to distribute files
   file:
     path: "{{ item }}"
@@ -47,3 +51,4 @@
   with_fileglob:
     - /tmp/*.pem
     - /tmp/*.kubeconfig
+  tags: pre

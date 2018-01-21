@@ -8,12 +8,21 @@
   copy: 
     src: "/tmp/{{ item }}"
     dest: "/var/lib/kubernetes/{{ item }}"
+    mode: 0600
   with_items:
     - ca.pem
-    - ca-key.pem
+#    - ca-key.pem
     - kubernetes-key.pem
     - kubernetes.pem
     - encryption-config.yaml
+
+- name: Extra step to manage self signed CA = Moving crt to ca store
+  copy: 
+    src: "/tmp/kubernetes.crt"
+    dest: "/usr/local/share/ca-certificates/"
+
+- name: Extra step to manage self signed CA = Updating ca-certs
+  shell: update-ca-certificates
 
 - name: Copying Kube files on master(s)
   copy: 

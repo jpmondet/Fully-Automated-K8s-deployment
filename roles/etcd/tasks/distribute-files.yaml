@@ -11,10 +11,19 @@
   template: 
     src: "/tmp/{{ item }}"
     dest: "/etc/etcd/{{ item }}"
+    mode: 0600
   with_items:
     - ca.pem
     - kubernetes-key.pem
     - kubernetes.pem
+
+- name: Extra step to manage self signed CA = Moving crt to ca store
+  copy: 
+    src: "/tmp/kubernetes.crt"
+    dest: "/usr/local/share/ca-certificates/"
+
+- name: Extra step to manage self signed CA = Updating ca-certs
+  shell: update-ca-certificates
 
 - name: Copying etcd binary files on database servers
   unarchive: 
