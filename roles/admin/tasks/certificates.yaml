@@ -35,7 +35,7 @@
   tags: pre
 
 - name: Generating Masters certificates with cfssl
-  shell: "cfssl_linux-amd64 gencert -ca=/tmp/ca.pem -ca-key=/tmp/ca-key.pem -config={{ role_path }}/files/ca-config.json -hostname={{ hostvars[item]['ext_ip'] }},{{ hostvars[item]['int_ip'] }},127.0.0.1,kubernetes.default -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson_linux-amd64 -bare /tmp/kubernetes"
+  shell: "cfssl_linux-amd64 gencert -ca=/tmp/ca.pem -ca-key=/tmp/ca-key.pem -config={{ role_path }}/files/ca-config.json -hostname=127.0.0.1,{{ hostvars[item]['ext_ip'] }},{{ hostvars[item]['int_ip'] }},kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.default.svc.cluster.local -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson_linux-amd64 -bare /tmp/kubernetes"
   with_items:
     - "{{ groups['masters'] }}"
   tags: pre
@@ -44,11 +44,10 @@
   shell: openssl x509 -outform der -in /tmp/ca.pem -out /tmp/kubernetes.crt
   tags: pre
 
-- name: Giving enough rights to be able to distribute files
+- name: Giving enough rights to be able to distribute cert files
   file:
     path: "{{ item }}"
     mode: "o+r"
   with_fileglob:
     - /tmp/*.pem
-    - /tmp/*.kubeconfig
   tags: pre

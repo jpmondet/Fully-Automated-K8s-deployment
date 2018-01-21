@@ -3,3 +3,4 @@
 - import_playbook: database.yaml
 - import_playbook: control-plane.yaml
 - import_playbook: workers.yaml
+- import_playbook: kube-addons.yaml

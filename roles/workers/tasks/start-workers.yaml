@@ -5,7 +5,7 @@
 
 - name: Install docker
   apt:
-    name: docker
+    name: docker.io
 
 - name: daemon_reload
   systemd: 

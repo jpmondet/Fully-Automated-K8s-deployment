@@ -61,10 +61,18 @@
     dest: "/etc/systemd/system/kube-proxy.service"
 
 - name: Copying Binaries files on minion(s)
-  template: 
+  synchronize: 
     src: "/tmp/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
-    mode: 0655
+  with_items:
+    - kubectl
+    - kube-proxy
+    - kubelet
+
+- name: Giving rights to binaries on minion(s)
+  file:
+    path: "/usr/local/bin/{{ item }}"
+    mode: 655
   with_items:
     - kubectl
     - kube-proxy
