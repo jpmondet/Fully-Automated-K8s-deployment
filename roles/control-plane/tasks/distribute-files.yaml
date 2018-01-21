@@ -11,7 +11,7 @@
     mode: 0600
   with_items:
     - ca.pem
-#    - ca-key.pem
+    - ca-key.pem
     - kubernetes-key.pem
     - kubernetes.pem
     - encryption-config.yaml
