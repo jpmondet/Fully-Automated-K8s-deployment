@@ -33,7 +33,7 @@
 #    state: present
 
 - name: RBAC for kubelets - ClusterRole
-  shell: "kubectl apply -f {{ role_path }}/files/rbac_clusterRole.yaml"
+  shell: "kubectl apply -f /tmp/rbac_clusterRole.yaml"
 
 - name: RBAC for kubelets - ClusterRoleBinding
-  shell: "kubectl apply -f {{ role_path }}/files/rbac_clusterRoleBinding.yaml"
+  shell: "kubectl apply -f /tmp/rbac_clusterRoleBinding.yaml"

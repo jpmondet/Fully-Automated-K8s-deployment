@@ -54,3 +54,11 @@
   copy: 
     src: "/tmp/kube-dns.yaml"
     dest: "/tmp/kube-dns.yaml"
+
+- name: Copying RBAC files on Master(s)
+  copy: 
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items:
+    - rbac_clusterRole.yaml
+    - rbac_clusterRoleBinding.yaml
