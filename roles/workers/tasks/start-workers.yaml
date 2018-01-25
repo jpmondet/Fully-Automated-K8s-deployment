@@ -3,9 +3,21 @@
   apt:
     name: socat
 
-- name: Install docker
+- name: Get keys of docker-ce repo  
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg 
+    state: present
+
+- name: Add repo
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+- name: Apt update/upgrade
   apt:
-    name: docker.io
+    update_cache: yes
+
+- name: Install docker-CE
+  apt:
+    name: docker-ce
 
 - name: daemon_reload
   systemd: 
