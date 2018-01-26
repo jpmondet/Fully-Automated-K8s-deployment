@@ -26,6 +26,8 @@
     mode: 0600
   with_items:
     - ca.pem
+    - kubernetes-key.pem
+    - kubernetes.pem
 
 - name: Extra step to manage self signed CA
   shell: openssl x509 -outform der -in /var/lib/kubernetes/ca.pem -out /usr/local/share/ca-certificates/kubernetes.crt
