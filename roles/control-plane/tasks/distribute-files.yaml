@@ -16,10 +16,13 @@
     - kubernetes.pem
     - encryption-config.yaml
 
-- name: Extra step to manage self signed CA = Moving crt to ca store
-  copy: 
-    src: "/tmp/kubernetes.crt"
-    dest: "/usr/local/share/ca-certificates/"
+- name: Extra step to manage self signed CA
+  shell: openssl x509 -outform der -in /var/lib/kubernetes/ca.pem -out /usr/local/share/ca-certificates/kubernetes.crt
+
+#- name: Extra step to manage self signed CA = Moving crt to ca store
+#  copy: 
+#    src: "/tmp/kubernetes.crt"
+#    dest: "/usr/local/share/ca-certificates/"
 
 - name: Extra step to manage self signed CA = Updating ca-certs
   shell: update-ca-certificates
