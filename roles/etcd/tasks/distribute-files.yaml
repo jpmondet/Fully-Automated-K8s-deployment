@@ -6,6 +6,7 @@
   with_items:
     - /etc/etcd
     - /var/lib/etcd
+    - /usr/local/share/ca-certificates
 
 - name: Copying cert files on database servers
   template: 
@@ -26,7 +27,7 @@
 #    dest: "/usr/local/share/ca-certificates/"
 
 - name: Extra step to manage self signed CA = Updating ca-certs
-  shell: update-ca-certificates
+  shell: /usr/sbin/update-ca-certificates
 
 - name: Copying etcd binary files on database servers
   unarchive: 

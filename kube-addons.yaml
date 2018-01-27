@@ -1,4 +1,4 @@
 ---
-- hosts: admin_machines
+- hosts: masters
   roles: 
     - role: kube-addons

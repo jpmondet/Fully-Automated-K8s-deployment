@@ -10,6 +10,7 @@
     - /var/lib/kube-proxy
     - /var/lib/kubernetes
     - /var/run/kubernetes
+    - /usr/local/share/ca-certificates
 
 - name: Copying pem files on minion(s)
   template: 
@@ -38,7 +39,7 @@
 #    dest: "/usr/local/share/ca-certificates/"
 
 - name: Extra step to manage self signed CA = Updating ca-certs
-  shell: update-ca-certificates
+  shell: /usr/sbin/update-ca-certificates
 
 - name: Copying Kubelet config on minion(s)
   template: 

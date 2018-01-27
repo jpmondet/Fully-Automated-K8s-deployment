@@ -41,13 +41,16 @@
   tags: pre
 
 - name: Extra step to manage self signed CA
-  shell: openssl x509 -outform der -in /tmp/ca.pem -out /tmp/kubernetes.crt
+  shell: openssl x509 -outform der -in /etc/etcd/ca.pem -out /usr/local/share/ca-certificates/kubernetes.crt
   tags: pre
+
+- name: Extra step to manage self signed CA = Updating ca-certs
+  shell: /usr/sbin/update-ca-certificates
 
 - name: Giving enough rights to be able to distribute cert files
   file:
     path: "{{ item }}"
     mode: "o+r"
   with_fileglob:
-    - /tmp/*.pem
+    - /tmp/*-key.pem
   tags: pre

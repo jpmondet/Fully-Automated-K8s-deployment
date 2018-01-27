@@ -1,8 +1,11 @@
 ---
 - name: Ensures /var/lib/kubernetes/ dir exists on Master(s)
   file: 
-    path=/var/lib/kubernetes/
+    path="{{ item }}"
     state=directory
+  with_items:
+    - /var/lib/kubernetes/
+    - /usr/local/share/ca-certificates
 
 - name: Copying cert files on master(s)
   copy: 
@@ -25,7 +28,7 @@
 #    dest: "/usr/local/share/ca-certificates/"
 
 - name: Extra step to manage self signed CA = Updating ca-certs
-  shell: update-ca-certificates
+  shell: /usr/sbin/update-ca-certificates
 
 - name: Copying Kube files on master(s)
   copy: 
