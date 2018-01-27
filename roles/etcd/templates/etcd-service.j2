@@ -3,7 +3,7 @@ Description=etcd
 Documentation=https://github.com/coreos
 
 [Service]
-ExecStart=/usr/local/bin/etcd --name {{ inventory_hostname }} --cert-file=/etc/etcd/kubernetes.pem --key-file=/etc/etcd/kubernetes-key.pem --peer-cert-file=/etc/etcd/kubernetes.pem --peer-key-file=/etc/etcd/kubernetes-key.pem --trusted-ca-file=/etc/etcd/ca.pem --peer-trusted-ca-file=/etc/etcd/ca.pem --initial-advertise-peer-urls https://{{ int_ip }}:2380 --listen-peer-urls https://{{ int_ip }}:2380 --listen-client-urls https://{{ int_ip }}:2379 --advertise-client-urls https://{{ int_ip }}:2379 --initial-cluster-token etcd-cluster-0 --initial-cluster {% for controller in groups.masters %}{{ controller }}=https://{{ hostvars[controller]['int_ip'] }}:2380{% if not loop.last %},{% endif %}{% endfor %} --initial-cluster-state new --data-dir=/var/lib/etcd --insecure-skip-tls-verify --insecure-transport=true
+ExecStart=/usr/local/bin/etcd --name {{ inventory_hostname }} --initial-advertise-peer-urls http://{{ int_ip }}:2380 --listen-peer-urls http://{{ int_ip }}:2380 --listen-client-urls http://{{ int_ip }}:2379,http://127.0.0.1:2379 --advertise-client-urls http://{{ int_ip }}:2379 --initial-cluster-token etcd-cluster-0 --initial-cluster {% for controller in groups.masters %}{{ controller }}=http://{{ hostvars[controller]['int_ip'] }}:2380{% if not loop.last %},{% endif %}{% endfor %} --initial-cluster-state new --data-dir=/var/lib/etcd
 Restart=on-failure
 RestartSec=5
 
