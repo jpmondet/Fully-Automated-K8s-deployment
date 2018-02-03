@@ -8,7 +8,7 @@ This ansible repository provides a quick way to automatically deploy a Kubernete
 
 The resulting cluster is meant to be ready to try different networking solutions (and much more, of course!) without layers of abstraction that prevent to understand exactly what's happening under the hood (such as kubeadm which makes everything very ~~too~~ easy to deploy).
 
-We all know about most of the existing networking plugins (*Flannel, Calico, Kube-router, etc..*) but this is a hugely moving ecosystem and having a "ready-to-bench" cluster looks convenient.
+We all know about most of the existing networking plugins (*Flannel, Calico, Kube-router, etc..*) but this is a hugely moving ecosystem and having a "ready-to-bench" cluster looks pretty convenient.
 
 ## The network topology
 
@@ -22,6 +22,17 @@ You can customize the **global_vars.yaml** to get the subnets you like for your 
 
 ## K8s networking solutions
 
-* Without plugins on fully L3 network
-* Plugins :
+* Simple cni plugin on a fully L3 network : 
+
+```
+git clone https://github.com/jpmondet/FullyAutomatedBGPfabric
+cd FullyAutomatedBGPfabric
+ansible-playbook deploy_network.yml -e "option=5549"
+cd -
+git clone https://github.com/jpmondet/Fully-Automated-K8s-deployment
+cd Fully-Automated-K8s-deployment
+ansible-playbook deploy_k8s.yaml
+```
+
+* Calico network plugin :
 [...]
