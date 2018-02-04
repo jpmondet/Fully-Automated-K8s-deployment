@@ -22,7 +22,7 @@ You can customize the **global_vars.yaml** to get the subnets you like for your 
 
 ## K8s networking solutions
 
-* Simple cni plugin on a fully L3 network : 
+* Standard Cni type bridge : 
 
 ```
 git clone https://github.com/jpmondet/FullyAutomatedBGPfabric
@@ -34,5 +34,8 @@ cd Fully-Automated-K8s-deployment
 ansible-playbook deploy_k8s.yaml
 ```
 
-* Calico network plugin :
+* Standard Cni type Kubenet : 
+* Calico :
+* Cilium :
+* Weave :
 [...]
