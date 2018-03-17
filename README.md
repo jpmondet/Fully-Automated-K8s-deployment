@@ -1,6 +1,6 @@
 # Fully-Automated-K8s-deployment
 
-*Work in progress...*
+*Learnt a lot on k8s here but this little project is now **OBSOLETE** since kubeadm's people are doing an awesome job and released "**phase**" that gives the chance to customize and set up easily a "best practices" cluster with the networking solution of choice*
 
 ## Introduction
 
