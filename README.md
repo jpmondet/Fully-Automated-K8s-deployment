@@ -4,7 +4,7 @@
 
 *I'll maybe switch everything to an overly customized kubeadm cluster in the future to learn more about kubeadm and see if an ansible template can help in any way or not.
 
-Edit : Working on it here : https://github.com/jpmondet/kubeadm-deployment-unleashed*  
+Edit : Working on it here : https://github.com/jpmondet/kubeadm-deployment-unleashed  
 
 ## Introduction
 
