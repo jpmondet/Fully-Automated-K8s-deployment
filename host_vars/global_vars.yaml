@@ -18,11 +18,12 @@ containerd_version: 1.1.2
 #
 master_ip: 88.88.88.88  # Also known as API Endpoint
 service_ip: 85.85.0.0/16 # Why 85 ? Because it looks like 8s in k8s ;-)
-dns_addon: False #Or false if you don't want the DNS cluster add-on
+dns_addon: True #Or false if you don't want the DNS cluster add-on. NEW: coreDNS will be installed instead of Kube-Dns
 cluster_dns: 85.85.85.85
 cluster_domain: cluster.local # Not totally supported for now
 cluster_cidr: 172.16.0.0/16
 proxy_mode: ipvs
+docker-ce: False #Docker replaced by containerd/runc
 #
 ## Misc for certificates
 #

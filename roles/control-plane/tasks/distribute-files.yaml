@@ -66,8 +66,11 @@
 
 - name: Copying DNS add-on file on Master(s)
   copy: 
-    src: "/tmp/kube-dns.yaml"
-    dest: "/tmp/kube-dns.yaml"
+    src: "/tmp/{{ item }}.yaml"
+    dest: "/tmp/{{ item }}.yaml"
+  with_items:
+    - kube-dns
+    - coredns
 
 - name: Copying RBAC files on Master(s)
   copy: 

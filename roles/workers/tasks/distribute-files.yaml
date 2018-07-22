@@ -98,6 +98,11 @@
     - runc.amd64
     - runsc
 
+- name: Copying runc binary on minion(s)
+  synchronize: 
+    src: "/tmp/runc.amd64"
+    dest: "/usr/local/bin/runc"
+
 - name: Giving rights to binaries on minion(s)
   file:
     path: "/usr/local/bin/{{ item }}"
@@ -106,7 +111,7 @@
     - kubectl
     - kube-proxy
     - kubelet
-    - runc.amd64
+    - runc
     - runsc
 
 - name: Copying Kubelet service on minion(s)

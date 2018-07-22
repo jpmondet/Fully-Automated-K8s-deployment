@@ -22,6 +22,7 @@
 - name: Install docker-CE
   apt:
     name: docker-ce
+  when: docker-ce
 
 - name: daemon_reload
   systemd: 
