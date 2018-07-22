@@ -19,6 +19,8 @@
     - kubernetes-key.pem
     - kubernetes.pem
     - encryption-config.yaml
+    - kube-scheduler.kubeconfig
+    - kube-controller-manager.kubeconfig
 
 - name: Extra step to manage self signed CA
   shell: openssl x509 -outform der -in /var/lib/kubernetes/ca.pem -out /usr/local/share/ca-certificates/kubernetes.crt
