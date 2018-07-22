@@ -5,13 +5,24 @@
 ################################################
 
 #
+## Versions of components
+#
+k8s_version: v1.11.1
+etcd_version: v3.3.8
+cni_plugin_version: v0.7.1
+cri_tools_version: v1.0.0-beta.0
+runc_version: v1.0.0-rc5
+containerd_version: 1.1.2
+#
 ## Essential network variables ##
 #
 master_ip: 11.11.11.11  # Also known as API Endpoint
 service_ip: 85.85.0.0/16 # Why 85 ? Because it looks like 8s in k8s ;-)
 dns_addon: False #Or false if you don't want the DNS cluster add-on
-cluster_dns: 85.85.85.85  
+cluster_dns: 85.85.85.85
+cluster_domain: cluster.local # Not totally supported for now
 cluster_cidr: 172.16.0.0/16
+proxy_mode: ipvs
 #
 ## Misc for certificates
 #

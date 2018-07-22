@@ -1,7 +1,11 @@
 ---
-- name: Install Socat
+- name: Install Dependencies
   apt:
-    name: socat
+    name: "{{ item }}"
+  with_items:
+    - socat
+    - conntrack
+    - ipset
 
 - name: Get keys of docker-ce repo  
   apt_key:
@@ -30,6 +34,6 @@
     state: started
   with_items:
     - containerd
-    - cri-containerd
     - kubelet
     - kube-proxy
+    #- cri-containerd # Not used anymore

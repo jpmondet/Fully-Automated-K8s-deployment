@@ -31,7 +31,7 @@
 
 - name: Copying etcd binary files on database servers
   unarchive: 
-    src: "/tmp/etcd-v3.2.11-linux-amd64.tar.gz"
+    src: "/tmp/etcd-{{ etcd_version }}-linux-amd64.tar.gz"
     dest: "/usr/local/bin"
     extra_opts: [--strip-components=1]
 

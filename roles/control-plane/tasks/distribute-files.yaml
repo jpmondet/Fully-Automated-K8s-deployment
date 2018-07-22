@@ -6,6 +6,7 @@
   with_items:
     - /var/lib/kubernetes/
     - /usr/local/share/ca-certificates
+    - /etc/kubernetes/config
 
 - name: Copying cert files on master(s)
   copy: 
@@ -55,6 +56,11 @@
   template: 
     src: "{{ role_path }}/files/kube-scheduler.service"
     dest: "/etc/systemd/system/kube-scheduler.service"
+
+- name: Copying kube-scheduler config file on Master(s)
+  template: 
+    src: "{{ role_path }}/files/kube-scheduler.yaml"
+    dest: "/etc/kubernetes/config/kube-scheduler.yaml"
 
 - name: Copying DNS add-on file on Master(s)
   copy: 

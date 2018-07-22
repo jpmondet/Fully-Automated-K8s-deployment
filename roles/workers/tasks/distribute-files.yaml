@@ -11,6 +11,7 @@
     - /var/lib/kubernetes
     - /var/run/kubernetes
     - /usr/local/share/ca-certificates
+    - /etc/containerd
 
 - name: Copying pem files on minion(s)
   template: 
@@ -46,6 +47,11 @@
     src: "/tmp/{{ inventory_hostname }}.kubeconfig"
     dest: "/var/lib/kubelet/kubeconfig"
 
+- name: Copying Kubelet config on minion(s) (kubelet-config.yaml)
+  template: 
+    src: "kubelet-config.yaml.j2"
+    dest: "/var/lib/kubelet/kubelet-config.yaml"
+
 - name: Copying Bridge files on minion(s)
   template: 
     src: "10-bridge-conf.j2"
@@ -56,10 +62,25 @@
     src: "{{ role_path }}/files/99-loopback.conf"
     dest: "/etc/cni/net.d/99-loopback.conf"
 
+- name: Copying containerd config files on minion(s)
+  template: 
+    src: "{{ role_path }}/files/config.toml"
+    dest: "/etc/containerd/config.toml"
+
+- name: Copying containerd service files on minion(s)
+  template: 
+    src: "{{ role_path }}/files/containerd.service"
+    dest: "/etc/systemd/system/containerd.service"
+
 - name: Copying Kube-proxy files on minion(s)
   template: 
     src: "/tmp/kube-proxy.kubeconfig"
     dest: "/var/lib/kube-proxy/kubeconfig"
+
+- name: Copying Kube-proxy yaml config files on minion(s)
+  template: 
+    src: "kube-proxy-config.yaml.j2"
+    dest: "/var/lib/kube-proxy/kube-proxy-config.yaml"
 
 - name: Copying Services files on minion(s)
   template: 
@@ -74,6 +95,8 @@
     - kubectl
     - kube-proxy
     - kubelet
+    - runc.amd64
+    - runsc
 
 - name: Giving rights to binaries on minion(s)
   file:
@@ -83,6 +106,8 @@
     - kubectl
     - kube-proxy
     - kubelet
+    - runc.amd64
+    - runsc
 
 - name: Copying Kubelet service on minion(s)
   template: 
@@ -91,10 +116,15 @@
 
 - name: Copying Cni-plugins files on minion(s)
   unarchive:
-    src: "/tmp/cni-plugins-amd64-v0.6.0.tgz"
+    src: "/tmp/cni-plugins-amd64-{{ cni_plugin_version }}.tgz"
     dest: "/opt/cni/bin"
 
-- name: Copying Cri-containerd files on minion(s)
+- name: Copying containerd files on minion(s)
   unarchive: 
-    src: "/tmp/cri-containerd-1.0.0-beta.0.linux-amd64.tar.gz"
+    src: "/tmp/containerd-{{ containerd_version }}.linux-amd64.tar.gz"
     dest: "/"
+
+- name: Copying crictl files on minion(s)
+  unarchive: 
+    src: "/tmp/crictl-{{ cri_tools_version }}-linux-amd64.tar.gz"
+    dest: "/usr/local/bin"
