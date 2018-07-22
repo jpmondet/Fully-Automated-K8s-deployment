@@ -20,6 +20,7 @@
     - "https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/containerd-{{ containerd_version }}.linux-amd64.tar.gz"
     - "https://storage.googleapis.com/kubernetes-the-hard-way/kube-dns.yaml"
     - "https://storage.googleapis.com/kubernetes-the-hard-way/runsc"
+    - "https://github.com/istio/istio/releases/download/{{ istio_version }}/istio-{{ istio_version }}-linux.tar.gz"
   tags: pre
 
 - name: Giving rights to execute files

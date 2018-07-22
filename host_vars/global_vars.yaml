@@ -13,6 +13,7 @@ cni_plugin_version: v0.7.1
 cri_tools_version: v1.0.0-beta.0
 runc_version: v1.0.0-rc5
 containerd_version: 1.1.2
+istio_version: 0.8.0
 #
 ## Essential network variables ##
 #
@@ -25,6 +26,7 @@ cluster_domain: cluster.local # Not totally supported for now
 cluster_cidr: 172.16.0.0/16
 proxy_mode: ipvs
 install_docker_ce: False #Docker replaced by containerd/runc
+install_istio: True
 #
 ## Misc for certificates
 #

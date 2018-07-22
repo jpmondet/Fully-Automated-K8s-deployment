@@ -1,4 +1,4 @@
 ---
-- hosts: masters
+- hosts: masters[0]
   roles: 
     - role: kube-addons
