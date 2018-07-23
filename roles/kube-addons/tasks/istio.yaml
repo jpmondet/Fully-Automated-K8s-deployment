@@ -1,12 +1,8 @@
 ---
 - name: Copying istio files on master
   unarchive: 
-    src: "/tmp/istio-{{ istio_version }}.linux-amd64.tar.gz"
+    src: "/tmp/istio-{{ istio_version }}-linux.tar.gz"
     dest: "/usr/local/bin"
-  when: install_istio
-
-- name: Adding path variable
-  command: export PATH=/usr/local/bin/istio-{{ istio_version }}/bin:$PATH
   when: install_istio
 
 - name: Installing istio
@@ -21,4 +17,8 @@
 
 - name: Labeling default namespace with auto-injector
   command: kubectl label namespace default istio-injection=enabled
+  when: install_istio
+
+- name: Adding path variable
+  command: export "PATH=/usr/local/bin/istio-{{ istio_version }}/bin:$PATH"
   when: install_istio

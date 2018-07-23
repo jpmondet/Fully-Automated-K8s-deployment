@@ -37,7 +37,7 @@
   tags: pre
 
 - name: Generating Masters certificates with cfssl
-  shell: "cfssl_linux-amd64 gencert -ca=/tmp/ca.pem -ca-key=/tmp/ca-key.pem -config={{ role_path }}/files/ca-config.json -hostname=127.0.0.1,{{ hostvars[item]['ext_ip'] }},{{ hostvars[item]['int_ip'] }},kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.default.svc.cluster.local -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson_linux-amd64 -bare /tmp/kubernetes"
+  shell: "cfssl_linux-amd64 gencert -ca=/tmp/ca.pem -ca-key=/tmp/ca-key.pem -config={{ role_path }}/files/ca-config.json -hostname=127.0.0.1,{{ hostvars[item]['ext_ip'] }},{{ hostvars[item]['int_ip'],{{ service_ip | ipaddr('net') | ipaddr('1') }},kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.default.svc.cluster.local -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson_linux-amd64 -bare /tmp/kubernetes"
   with_items:
     - "{{ groups['masters'] }}"
   tags: pre

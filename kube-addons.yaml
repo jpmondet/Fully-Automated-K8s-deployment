@@ -1,4 +1,5 @@
 ---
 - hosts: masters[0]
+  become: True
   roles: 
     - role: kube-addons

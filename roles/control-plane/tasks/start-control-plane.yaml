@@ -1,10 +1,10 @@
 ---
-- name: Adding dummy0 interface if it doesn't exist
-  shell: ip link add dummy0 type dummy
-  ignore_errors: True
-
-- name: Add the master_ip to dummy0 and up the interface if it's down
-  command: "ip address add {{ master_ip }}/32 dev dummy0 && ip link set dummy0 up"
+- name: Adding dummy0 interface if it doesn't exist & Add the master_ip to dummy0 and up the interface if it's down
+  shell: "{{ item }}"
+  with_items:
+    - "ip link add dummy0 type dummy"
+    - "ip address add {{ master_ip }}/32 dev dummy0"
+    - "ip link set dummy0 up"
   ignore_errors: True
 
 - name: Install Python yaml for k8s
