@@ -1,4 +1,15 @@
 ---
+- name: Add kernel modules for ipvs
+  modprobe:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ip_vs
+    - ip_vs_sh
+    - ip_vs_rr
+    - ip_vs_wrr
+    - nf_conntrack_ipv4
+
 - name: Install Dependencies
   apt:
     name: "{{ item }}"
@@ -6,6 +17,7 @@
     - socat
     - conntrack
     - ipset
+    - ipvsadm
 
 - name: Get keys of docker-ce repo  
   apt_key:
