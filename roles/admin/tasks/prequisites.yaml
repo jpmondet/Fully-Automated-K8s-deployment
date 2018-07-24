@@ -1,4 +1,8 @@
 ---
+- name: Install dependencie to Ansible ipaddr filter
+  apt:
+    name: python-netaddr 
+
 - name: Get prequisites
   get_url:
     url: "{{ item }}"
