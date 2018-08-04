@@ -52,5 +52,5 @@
     #- cri-containerd # Not used anymore
 
 - name: Announce services thanks to FRR/bgpd
-  command: vtysh -c "conf t ; ip route {{ service_ip }} cni0
+  command: vtysh -f /tmp/add_route
   when: announce_svc

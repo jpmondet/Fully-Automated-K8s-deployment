@@ -87,6 +87,12 @@
     src: "kube-proxy-service.j2"
     dest: "/etc/systemd/system/kube-proxy.service"
 
+- name: Copying Routes files on minion(s)
+  template: 
+    src: "add_route.j2"
+    dest: "/tmp/add_route"
+  when: announce_svc
+
 - name: Copying Binaries files on minion(s)
   synchronize: 
     src: "/tmp/{{ item }}"
