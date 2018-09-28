@@ -1,7 +1,11 @@
 ---
 - name: Install dependencie to Ansible ipaddr filter
   apt:
-    name: python-netaddr 
+    name: python-pip
+
+- name: Adding netaddr via pip for ipaddr filter
+  pip:
+    name: netaddr
 
 - name: Get prequisites
   get_url:

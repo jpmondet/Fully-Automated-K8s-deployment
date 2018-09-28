@@ -53,4 +53,8 @@
 
 - name: Announce services thanks to FRR/bgpd
   command: vtysh -f /tmp/add_route
-  when: announce_svc
+  when: announce_svc and proxy_mode == 'iptables'
+
+- name: Up the dummyz when using ipvs
+  command: ip link set kube-ipvs0 up
+  when: proxy_mode == 'ipvs'
