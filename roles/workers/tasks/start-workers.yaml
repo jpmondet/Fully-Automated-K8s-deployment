@@ -58,3 +58,8 @@
 - name: Up the dummyz when using ipvs
   command: ip link set kube-ipvs0 up
   when: proxy_mode == 'ipvs'
+
+- cron:
+    name: "Check the dummy is still up"
+    minute: "5"
+    job: "/usr/local/bin/check_dummy_state.sh"

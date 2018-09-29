@@ -93,6 +93,12 @@
     dest: "/tmp/add_route"
   when: announce_svc
 
+- name: Copying kube-ipvs0 cron check on minion(s)
+  template: 
+    src: "{{ role_path }}/files/check_dummy_state.sh"
+    dest: "/usr/local/bin/check_dummy_state.sh"
+  when: announce_svc
+
 - name: Copying Binaries files on minion(s)
   synchronize: 
     src: "/tmp/{{ item }}"

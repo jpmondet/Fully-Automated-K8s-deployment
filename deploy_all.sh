@@ -17,8 +17,10 @@ wait
 cd ../Fully-automated-k8s-deployment
 wait
  
-# Bypassing a bug with netaddr on the deploy_k8s playbook
-pip install netaddr
+# Bypassing an issue with netaddr
+# Cause it has been installed with sudo by CITC.
+sudo pip uninstall -y netaddr
+pip install --user netaddr
 wait
  
 ansible-playbook deploy_k8s.yaml
