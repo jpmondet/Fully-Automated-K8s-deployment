@@ -61,5 +61,4 @@
 
 - cron:
     name: "Check the dummy is still up"
-    minute: "5"
-    job: "/usr/local/bin/check_dummy_state.sh"
+    job: "sudo /usr/local/bin/check_dummy_state.sh"

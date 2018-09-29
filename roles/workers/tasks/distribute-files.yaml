@@ -125,6 +125,7 @@
     - kubelet
     - runc
     - runsc
+    - check_dummy_state.sh
 
 - name: Copying Kubelet service on minion(s)
   template: 
