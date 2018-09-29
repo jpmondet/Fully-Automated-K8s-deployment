@@ -1,8 +1,4 @@
 ---
-- name: Install dependencie to Ansible ipaddr filter
-  apt:
-    name: python-pip
-
 - name: Adding netaddr via pip for ipaddr filter
   pip:
     name: netaddr
