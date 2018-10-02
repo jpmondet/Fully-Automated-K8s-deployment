@@ -15,6 +15,7 @@ ansible-playbook deploy_network.yml -e "option=5549"
 wait
  
 cd ../Fully-automated-k8s-deployment
+git checkout 1.12
 wait
  
 # Bypassing an issue with netaddr
