@@ -12,3 +12,4 @@
 - name: Kube dns
   shell: "kubectl create -f /tmp/coredns.yaml"
   when: dns_addon
+  delegate_to: "{{ groups['masters'][0] }}"
