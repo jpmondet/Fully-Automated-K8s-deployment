@@ -28,7 +28,7 @@ cluster_cidr: 172.16.0.0/16
 proxy_mode: ipvs #ipvs or iptables
 install_docker_ce: False #Docker replaced by containerd/runc
 install_istio: False # Istio 0.8.0 is clearly not production ready -> Have to bump to v1.0 to try
-network_policies: False #Use of kube-router in firewall only mode to be able to leverage Network policies
+network_policies: True #Use of kubefw to be able to leverage Network policies
 #
 ## Misc for certificates
 #
