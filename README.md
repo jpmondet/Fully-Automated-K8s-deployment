@@ -29,7 +29,7 @@ You can customize the **global_vars.yaml** to get the subnets you like for your 
 (On a blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench)
 
 ```
-wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/1.12/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
+wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/master/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
 ```
 
 * Cilium : In Progress (needs a kernel upgrade)
