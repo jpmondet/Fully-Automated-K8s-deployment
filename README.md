@@ -1,9 +1,5 @@
 # Fully-Automated-K8s-deployment
 
-*Learnt a lot on k8s here but since kubeadm's people are doing an awesome job and released "**phase**" that gives a chance to customize and set up easily a "best practices" cluster, I'll maybe switch everything to an overly customized kubeadm cluster in the future to learn more about kubeadm and see if an ansible template can help in any way or not.*
-
-Edit : Working on it here : https://github.com/jpmondet/kubeadm-deployment-unleashed
-
 ## Introduction
 
 This ansible repository provides a quick way to automatically deploy a Kubernetes Cluster inspired by the "[K8s the hard way](https://github.com/kelseyhightower/kubernetes-the-hard-way)" method.
@@ -18,26 +14,20 @@ I am going to re-use the network topology deployed with the [Fully-Automated-BGP
 
 ## The resulting cluster
 
-You can customize the **global_vars.yaml** to get the subnets you like for your resulting cluster but the defaults are : 
-
-*Diagram to insert here*
-
-## K8s networking solutions
-
-* Standard Cni type bridge with IPVS, CoreDNS and a pure L3 network : 
-
-(On a blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench)
+You can optimize everything but if you need a quick test lab, you can deploy with a one-liner on a free blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench : 
 
 ```
 wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/1.13/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
 ```
 
-* Cilium : In Progress (needs a kernel upgrade)
-* Kube-router: Firewall-only mode
+Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
 
-Switch the variable ``network_policies`` to ``True``
-
-* Calico : Not Implemented fully yet (Cause of restrictions in adressing scheme)
-* Standard Cni type Kubenet : Not Implemented yet 
-* Weave :
-[...]
+* Kubernetes 1.13
+* containerd 1.2.1
+* runc 1.0.0-rc6
+* etcd 3.3.10
+* Standard Cni type Bridge
+* IPVS replaces IPtables for Services 
+* CoreDNS replaces Kubedns (1.13 made CoreDNS the default so it's no more a 'cool' feature to have ;-)
+* A pure RFC5549-based L3 IPv6 network (which lets you use IPv4 above v6)
+* [Kubefw](https://github.com/jpmondet/kubefw) to leverage Network Policies
