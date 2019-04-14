@@ -9,7 +9,7 @@ data:
         log stdout
         health
         kubernetes {{ cluster_domain }}
-        proxy . /etc/resolv.conf
+        forward . /etc/resolv.conf
         cache 30
     }
 ---
