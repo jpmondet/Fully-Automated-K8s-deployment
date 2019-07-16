@@ -7,13 +7,14 @@
 #
 ## Versions of components
 #
-k8s_version: v1.14.1
-etcd_version: v3.3.12
-cni_plugin_version: v0.7.5
-cri_tools_version: v1.13.0
-runc_version: v1.0.0-rc6
-containerd_version: 1.2.5
-istio_version: 1.0.2
+k8s_version: v1.15.0 #https://github.com/kubernetes/kubernetes/releases
+etcd_version: v3.3.13 #https://github.com/etcd-io/etcd/releases
+cni_plugin_version: v0.8.1 #https://github.com/containernetworking/plugins/releases
+cri_tools_version: v1.15.0 #https://github.com/kubernetes-sigs/cri-tools/releases
+runc_version: v1.0.0-rc8 #https://github.com/opencontainers/runc/releases
+containerd_version: 1.2.7 #https://github.com/containerd/containerd/releases
+istio_version: 1.2.2 #https://github.com/istio/istio/releases
+#cilium_version: 1.5.4 #https://github.com/cilium/cilium/releases - Not implemented
 #
 ## Essential network variables ##
 #
