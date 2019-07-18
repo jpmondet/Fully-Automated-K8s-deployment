@@ -134,7 +134,7 @@
 
 - name: Copying Cni-plugins files on minion(s)
   unarchive:
-    src: "/tmp/cni-plugins-amd64-{{ cni_plugin_version }}.tgz"
+    src: "/tmp/cni-plugins-linux-amd64-{{ cni_plugin_version }}.tgz"
     dest: "/opt/cni/bin"
 
 - name: Copying containerd files on minion(s)
