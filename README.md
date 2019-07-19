@@ -17,7 +17,7 @@ I am going to re-use the network topology deployed with the [Fully-Automated-BGP
 You can optimize everything but if you need a quick test lab, you can deploy with a one-liner on a free blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench : 
 
 ```
-wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/k8s_1_15/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
+wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/master/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
 ```
 
 Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
@@ -28,6 +28,6 @@ Some customization can be done by changeing values in the **global_vars.yaml** f
 * etcd 3.3.13
 * Standard CNI type Bridge
 * IPVS replaces IPtables for Services 
-* CoreDNS replaces Kubedns (1.13 made CoreDNS the default so it's no more a 'cool' feature to have ;-)
+* CoreDNS replaces Kubedns (1.13 made CoreDNS the default so it's not an 'innovation' anymore but well ;-) )
 * A pure RFC5549-based L3 IPv6 network (which lets you use IPv4 above v6)
 * [Kubefw](https://github.com/jpmondet/kubefw) to leverage Network Policies

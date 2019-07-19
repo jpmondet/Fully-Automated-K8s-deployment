@@ -16,8 +16,8 @@ wait
  
 cd ../Fully-automated-k8s-deployment
 wait
-git checkout k8s_1_15
-wait
+#git checkout k8s_1_15
+#wait
  
 # Bypassing an issue with netaddr
 # Cause it has been installed with sudo by CITC.
