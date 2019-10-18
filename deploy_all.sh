@@ -9,15 +9,15 @@ git clone https://github.com/jpmondet/Fully-automated-k8s-deployment
 wait
  
 cd $PWD/FullyAutomatedBGPFabric
+git checkout frr7-1
 wait
  
 ansible-playbook deploy_network.yml -e "option=5549"
 wait
  
 cd ../Fully-automated-k8s-deployment
+git checkout 1.16
 wait
-#git checkout k8s_1_15
-#wait
  
 # Bypassing an issue with netaddr
 # Cause it has been installed with sudo by CITC.

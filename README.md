@@ -17,15 +17,15 @@ I am going to re-use the network topology deployed with the [Fully-Automated-BGP
 You can optimize everything but if you need a quick test lab, you can deploy with a one-liner on a free blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench : 
 
 ```
-wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/master/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
+wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/1.16/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
 ```
 
 Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
 
-* Kubernetes 1.15.3 (1.15.0 had a huge regression on IPVS)
+* Kubernetes 1.16.2
 * containerd 1.2.7
 * runc 1.0.0-rc8
-* etcd 3.4.0
+* etcd 3.4.2
 * Standard CNI type Bridge
 * IPVS replaces IPtables for Services 
 * CoreDNS replaces Kubedns (1.13 made CoreDNS the default so it's not an 'innovation' anymore but well ;-) )
