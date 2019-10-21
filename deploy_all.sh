@@ -9,14 +9,14 @@ git clone https://github.com/jpmondet/Fully-automated-k8s-deployment
 wait
  
 cd $PWD/FullyAutomatedBGPFabric
-git checkout frr7-1
+#git checkout frr7-1
 wait
  
 ansible-playbook deploy_network.yml -e "option=5549"
 wait
  
 cd ../Fully-automated-k8s-deployment
-git checkout 1.16
+#git checkout 1.16
 wait
  
 # Bypassing an issue with netaddr
