@@ -11,6 +11,9 @@ wait
 cd $PWD/FullyAutomatedBGPFabric
 #git checkout frr7-1
 wait
+
+cat ../.ssh/id_rsa.pub >> ../.ssh/authorized_keys
+wait
  
 ansible-playbook deploy_network.yml -e "option=5549"
 wait
