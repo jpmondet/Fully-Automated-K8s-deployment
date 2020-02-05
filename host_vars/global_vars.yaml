@@ -18,7 +18,7 @@ istio_version: 1.2.2 #https://github.com/istio/istio/releases
 #
 ## Essential network variables ##
 #
-master_ip: 88.88.88.88  # Also known as API Endpoint
+master_ip: 111.111.111.111  # Also known as API Endpoint
 add_dummy0_master_ip: True #If you're using BGP to announce your api server address
 service_ip: 85.85.0.0/16 # Why 85 ? Because it looks like 8s in k8s ;-)
 announce_svc: True # If you use FRR/bgpd, you can automatically announce service IPs on workers
