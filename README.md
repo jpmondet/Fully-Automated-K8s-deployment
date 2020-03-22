@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/m
 
 Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
 
-* Kubernetes 1.17.2
+* Kubernetes 1.17.3
 * containerd 1.3.3
 * runc 1.0.0-rc10
 * etcd 3.4.3
