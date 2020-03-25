@@ -21,7 +21,7 @@ ansible-playbook deploy_network.yml -e "option=5549"
 wait
  
 cd ../Fully-automated-k8s-deployment
-#git checkout increase_nb_nodes
+git checkout v1.17.4
 wait
  
 # Bypassing an issue with netaddr
