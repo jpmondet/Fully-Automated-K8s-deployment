@@ -30,7 +30,11 @@ sudo pip uninstall -y netaddr
 wait
 pip install --user netaddr
 wait
+
+# Temporary fix until if find what's happening...
+ansible --become cluster -a "sudo systemctl restart networking"
  
+# Actual deployment
 ansible-playbook deploy_k8s.yaml
 
 

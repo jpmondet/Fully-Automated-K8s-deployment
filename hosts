@@ -10,6 +10,11 @@ oob-mgmt-server
 [databases]
 server0[1:3]
 
+[cluster:children]
+masters
+workers
+databases
+
 [allservers:children]
 masters
 workers
