@@ -22,10 +22,10 @@ wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/m
 
 Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
 
-* Kubernetes 1.17.3
+* Kubernetes 1.17.4
 * containerd 1.3.3
 * runc 1.0.0-rc10
-* etcd 3.4.3
+* etcd 3.4.5
 * Standard CNI type Bridge (cni-plugin v0.8.5)
 * IPVS replaces IPtables for Services (Not really an 'innovation' anymore :-) )
 * CoreDNS replaces Kubedns (1.13 made CoreDNS the default so it's not an 'innovation' anymore but well ;-) )
