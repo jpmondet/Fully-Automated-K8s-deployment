@@ -12,12 +12,7 @@
 
 - name: Install Dependencies
   apt:
-    name: "{{ item }}"
-  with_items:
-    - socat
-    - conntrack
-    - ipset
-    - ipvsadm
+    name: ['socat', 'conntrack', 'ipset', 'ipvsadm']
 
 - name: Get keys of docker-ce repo  
   apt_key:
@@ -25,7 +20,8 @@
     state: present
 
 - name: Add repo
-  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  become: true
+  shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 - name: Apt update/upgrade
   apt:
