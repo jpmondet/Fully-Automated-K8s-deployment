@@ -45,3 +45,11 @@
 
 #- name: RBAC for kubelets - ClusterRoleBinding
 #  shell: "kubectl apply -f /tmp/rbac_clusterRoleBinding.yaml"
+
+# v1.18.0 disabled default master address of 127.0.0.1 when using kubectl
+
+- name: Make sure KUBERNETES_MASTER env variable is set
+  lineinfile:
+    path: /root/.bashrc
+    state: present
+    line: "export KUBERNETES_MASTER=127.0.0.1:8080"

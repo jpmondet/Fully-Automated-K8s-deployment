@@ -17,12 +17,12 @@ I am going to re-use the network topology deployed with the [Fully-Automated-BGP
 You can optimize everything but if you need a quick test lab, you can deploy with a one-liner on a free blank [Cumulus In The Cloud](https://cumulusnetworks.com/products/cumulus-in-the-cloud/) workbench : 
 
 ```
-wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/master/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
+wget https://raw.githubusercontent.com/jpmondet/Fully-Automated-K8s-deployment/v1.18.0/deploy_all.sh ; chmod u+x deploy_all.sh ; bash deploy_all.sh
 ```
 
 Some customization can be done by changeing values in the **global_vars.yaml** file but the defaults one-liner above gives you : 
 
-* Kubernetes 1.17.4
+* Kubernetes 1.18.0
 * containerd 1.3.3
 * runc 1.0.0-rc10
 * etcd 3.4.5
