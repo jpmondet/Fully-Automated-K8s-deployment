@@ -21,7 +21,7 @@ ansible-playbook deploy_network.yml -e "option=5549"
 wait
  
 cd ../Fully-automated-k8s-deployment
-#git checkout v1.17.4
+git checkout v1.18.0
 wait
  
 # Bypassing an issue with netaddr
@@ -32,10 +32,10 @@ pip install --user netaddr
 wait
 
 # Temporary fix until if find what's happening...
-ansible --become cluster -a "sudo systemctl restart networking"
+ansible --become cluster -a "systemctl restart networking"
  
 # Actual deployment
 ansible-playbook deploy_k8s.yaml
 
-
-
+# Temporary fix until if find what's happening...
+ansible --become cluster -a "systemctl restart networking"
