@@ -12,6 +12,18 @@ cd $PWD/FullyAutomatedBGPFabric
 #git checkout frr7-1
 wait
 
+ansible --become fabric -m ping
+if [ $? -eq 0 ]; then
+   ansible --become servers -m ping
+   if [ $? -ne 0 ]; then
+       echo "Hmm, did CITC finished booting ? Looks like 1 or more servers are not responsive..."
+       exit 1
+   fi
+else
+   echo "Hmm, did CITC finished booting ? Looks like 1 or more routers are not responsive..."
+   exit 1
+fi
+
 cat ../.ssh/id_rsa.pub >> ../.ssh/authorized_keys
 wait
  
