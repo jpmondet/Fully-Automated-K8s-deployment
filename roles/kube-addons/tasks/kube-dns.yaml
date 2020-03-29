@@ -10,6 +10,6 @@
 #  shell: "kubectl create -f /tmp/kube-dns.yaml"
 #  when: dns_addon
 - name: Kube dns
-  shell: "kubectl create -f /tmp/coredns.yaml"
+  command: kubectl create -f /tmp/coredns.yaml --kubeconfig=/tmp/k8s-config
   when: dns_addon
   delegate_to: "{{ groups['masters'][0] }}"

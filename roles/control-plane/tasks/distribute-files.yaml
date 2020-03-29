@@ -73,6 +73,7 @@
   with_items:
     - kube-dns
     - coredns
+    - k8s-config
 
 - name: Copying RBAC files on Master(s)
   copy: 

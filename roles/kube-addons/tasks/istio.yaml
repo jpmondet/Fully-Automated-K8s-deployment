@@ -6,7 +6,7 @@
   when: install_istio
 
 - name: Installing istio
-  command: kubectl apply -f /usr/local/bin/istio-{{ istio_version }}/install/kubernetes/istio-demo-auth.yaml
+  command: kubectl apply -f /usr/local/bin/istio-{{ istio_version }}/install/kubernetes/istio-demo-auth.yaml --kubeconfig=/tmp/k8s-config
   when: install_istio
 
 #- name: Creating signed cert for Automatic sidecar Injection

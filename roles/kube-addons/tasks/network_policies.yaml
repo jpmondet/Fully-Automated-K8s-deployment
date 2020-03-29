@@ -1,6 +1,6 @@
 ---
 - name: Installing kubefw to implement network_policies
-  command: kubectl apply -f {{ kubefw_deploy }}
+  command: kubectl apply -f {{ kubefw_deploy }} --kubeconfig=/tmp/k8s-config
   when: network_policies
   delegate_to: "{{ groups['masters'][0] }}"
 
