@@ -9,7 +9,7 @@ git clone https://github.com/jpmondet/Fully-automated-k8s-deployment
 wait
  
 cd $PWD/FullyAutomatedBGPFabric
-#git checkout frr7-1
+git checkout ifreload_classes
 wait
 
 cat ../.ssh/id_rsa.pub >> ../.ssh/authorized_keys
@@ -17,11 +17,11 @@ wait
  
 ansible-playbook deploy_network.yml -e "option=5549"
 wait
-ansible-playbook deploy_network.yml -e "option=5549"
-wait
+#ansible-playbook deploy_network.yml -e "option=5549"
+#wait
  
 cd ../Fully-automated-k8s-deployment
-#git checkout v1.17.4
+git checkout k8s_1_19
 wait
  
 # Bypassing an issue with netaddr
