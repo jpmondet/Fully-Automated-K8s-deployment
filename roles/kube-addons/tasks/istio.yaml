@@ -1,7 +1,7 @@
 ---
 - name: Copying istio files on master
   unarchive: 
-    src: "/tmp/istio-{{ istio_version }}-linux.tar.gz"
+    src: "/tmp/istio-{{ istio_version }}-linux-amd64.tar.gz"
     dest: "/usr/local/bin"
   when: install_istio
 

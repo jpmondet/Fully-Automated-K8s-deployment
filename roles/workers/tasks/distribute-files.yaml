@@ -139,7 +139,7 @@
 
 - name: Copying containerd files on minion(s)
   unarchive: 
-    src: "/tmp/containerd-{{ containerd_version }}.linux-amd64.tar.gz"
+    src: "/tmp/containerd-{{ containerd_version }}-linux-amd64.tar.gz"
     dest: "/"
 
 - name: Copying crictl files on minion(s)
