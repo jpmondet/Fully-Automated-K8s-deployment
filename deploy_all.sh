@@ -9,7 +9,7 @@ git clone https://github.com/jpmondet/Fully-automated-k8s-deployment
 wait
  
 cd $PWD/FullyAutomatedBGPFabric
-git checkout ifreload_classes
+#git checkout ifreload_classes
 wait
 
 cat ../.ssh/id_rsa.pub >> ../.ssh/authorized_keys
@@ -21,7 +21,7 @@ wait
 #wait
  
 cd ../Fully-automated-k8s-deployment
-git checkout k8s_1_19
+#git checkout k8s_1_19
 wait
  
 # Bypassing an issue with netaddr
